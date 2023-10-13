@@ -28,10 +28,10 @@ public class Estudiante {
         System.out.println("La materia 2 es: \n"+materia2);
         System.out.println("La materia 3 es: \n"+materia3);
     }
-    public void imprimirProfesores(){
-        System.out.println("El Profesor 1 es: \n"+Profesor1);
-        System.out.println("El Profesor 2 es: \n"+Profesor2);
-        System.out.println("El Profesor 3 es: \n"+Profesor3);
+    public void imprimirProfesores(String profesor1, String profesor2, String profesor3){
+        System.out.println("El Profesor 1 es: \n"+profesor1);
+        System.out.println("El Profesor 2 es: \n"+profesor2);
+        System.out.println("El Profesor 3 es: \n"+profesor3);
     }
     public void ingresarDatos(){
         Scanner sc = new Scanner(System.in);
