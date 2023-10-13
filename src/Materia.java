@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Materia {
     private String nombre="";
     private int nrc=0;
@@ -67,4 +69,31 @@ public class Materia {
     public void setProfesor3(Profesor profesor3) {
         this.profesor3 = profesor3;
     }
+
+    public void ingresarDatos(int i){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese nombre de la materia: \n"+i);
+        String nombre = sc.next();
+        System.out.println("Ingrese el nrc de la materia: \n"+i);
+        int nrc = sc.nextInt();
+        System.out.println("Ingrese el numero de horas de la materia: \n"+i);
+        String numHoras = sc.next();
+    }
+
+    //Se puede llamar a metodos solo de objetos creados
+    //i es un identificador para saber a cual de los profesores estamos llamando, puede ser 1, 2 o 3, que definen a i.
+    public void ingresarProfesor(int i){
+        if (i==1){
+            profesor1=new Profesor();
+            profesor1.ingresarDatos(i);
+        }else if (i==2){
+            profesor2=new Profesor();
+            profesor2.ingresarDatos(i);
+        }else{
+            profesor3=new Profesor();
+            profesor3.ingresarDatos(i);
+        }
+        //error null pointer exception = es cuando no esta intanciado el objeto (cuando se lo llama)
+    }
+
 }

@@ -24,15 +24,23 @@ public class Estudiante {
     }
 
     public void imprimirMaterias(){
-        System.out.println("La materia 1 es: \n"+materia1);
-        System.out.println("La materia 2 es: \n"+materia2);
-        System.out.println("La materia 3 es: \n"+materia3);
+        String nomMateria1 = materia1.getNombre();
+        int nrc1 = materia1.getNrc();
+        System.out.println("La materia 1 es: \n"+nomMateria1+ " y el nrc es: "+nrc1);
+        String nomMateria2 = materia2.getNombre();
+        int nrc2 = materia2.getNrc();
+        System.out.println("La materia 2 es: \n"+nomMateria2+ " y el nrc es: "+nrc2);
+        String nomMateria3 = materia3.getNombre();
+        int nrc3 = materia3.getNrc();
+        System.out.println("La materia 3 es: \n"+nomMateria3+ " y el nrc es: "+nrc3);
     }
     public void imprimirTodosProfesores(){
         String nomMateria1Profesor1 = materia1.getProfesor1().getNombre();
         System.out.println("El nombre del profesor 1 de la materia: "+materia1.getNombre()+" es: "+nomMateria1Profesor1);
         String nomProfesor2Materia3 = materia3.getProfesor2().getNombre();
         System.out.println("El nombre del profesor 2 de la materia: "+materia3.getNombre()+" es: "+nomProfesor2Materia3);
+        String nomProfesor3Materia2 = materia2.getProfesor3().getNombre();
+        System.out.println("El nombre del profesor 3 de la materia: "+materia2.getNombre()+" es: "+nomProfesor3Materia2);
     }
     public void ingresarDatos(){
         Scanner sc = new Scanner(System.in);
@@ -99,37 +107,5 @@ public class Estudiante {
 
     public void setMateria3(Materia materia3) {
         this.materia3 = materia3;
-    }
-
-    public Materia getMateria() {
-        return materia;
-    }
-
-    public void setMateria(Materia materia) {
-        this.materia = materia;
-    }
-
-    public Profesor getProfesor1() {
-        return profesor1;
-    }
-
-    public void setProfesor1(Profesor profesor1) {
-        this.profesor1 = profesor1;
-    }
-
-    public Profesor getProfesor2() {
-        return profesor2;
-    }
-
-    public void setProfesor2(Profesor profesor2) {
-        this.profesor2 = profesor2;
-    }
-
-    public Profesor getProfesor3() {
-        return profesor3;
-    }
-
-    public void setProfesor3(Profesor profesor3) {
-        this.profesor3 = profesor3;
     }
 }
