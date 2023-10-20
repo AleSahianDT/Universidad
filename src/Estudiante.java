@@ -1,20 +1,18 @@
 import java.util.Scanner;
 
 public class Estudiante {
-    private int idBanner=0;
-    private int cedula=0;
-    private String nombre="";
+    private int idBanner;
+    private int cedula;
+    private String nombre;
     private Materia materia1;
     private Materia materia2;
     private Materia materia3;
 
-
-
-    public Estudiante(){
-
+    public Estudiante() {
+        // Constructor vacío
     }
 
-    public Estudiante(int idBanner, int cedula, String nombre, Materia materia1, Materia materia2, Materia materia3, Materia materia, Profesor profesor1, Profesor profesor2, Profesor profesor3) {
+    public Estudiante(int idBanner, int cedula, String nombre, Materia materia1, Materia materia2, Materia materia3) {
         this.idBanner = idBanner;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -23,42 +21,72 @@ public class Estudiante {
         this.materia3 = materia3;
     }
 
-    public void imprimirMaterias(){
-        String nomMateria1 = materia1.getNombre();
-        int nrc1 = materia1.getNrc();
-        System.out.println("La materia 1 es: \n"+nomMateria1+ " y el nrc es: "+nrc1);
-        String nomMateria2 = materia2.getNombre();
-        int nrc2 = materia2.getNrc();
-        System.out.println("La materia 2 es: \n"+nomMateria2+ " y el nrc es: "+nrc2);
-        String nomMateria3 = materia3.getNombre();
-        int nrc3 = materia3.getNrc();
-        System.out.println("La materia 3 es: \n"+nomMateria3+ " y el nrc es: "+nrc3);
+    public void imprimirMaterias() {
+        System.out.println("La materia 1 es: " + materia1.getNombre() + "y el NRC es: " + materia1.getNrc());
+        System.out.println("La materia 2 es: " + materia2.getNombre() + "y el NRC es: " + materia2.getNrc());
+        System.out.println("La materia 3 es: " + materia3.getNombre() + "y el NRC es: " + materia3.getNrc());
     }
-    public void imprimirTodosProfesores(){
-        String nomMateria1Profesor1 = materia1.getProfesor1().getNombre();
-        System.out.println("El nombre del profesor 1 de la materia: "+materia1.getNombre()+" es: "+nomMateria1Profesor1);
-        String nomProfesor2Materia3 = materia3.getProfesor2().getNombre();
-        System.out.println("El nombre del profesor 2 de la materia: "+materia3.getNombre()+" es: "+nomProfesor2Materia3);
-        String nomProfesor3Materia2 = materia2.getProfesor3().getNombre();
-        System.out.println("El nombre del profesor 3 de la materia: "+materia2.getNombre()+" es: "+nomProfesor3Materia2);
-    }
-    public void ingresarDatos(){
+
+    public void ingresarMaterias() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del estudiante: \n");
-        String nombre = sc.next();
-        System.out.println("Ingrese su numero de cedula: \n");
+        System.out.println("Ingrese datos para la Materia 1:");
+        Materia materia1 = ingresarMateria(sc, 1);
+        System.out.println("Ingrese datos para la Materia 2:");
+        Materia materia2 = ingresarMateria(sc, 2);
+        System.out.println("Ingrese datos para la Materia 3:");
+        Materia materia3 = ingresarMateria(sc, 3);
+
+        setMateria1(materia1);
+        setMateria2(materia2);
+        setMateria3(materia3);
+    }
+
+
+    private Materia ingresarMateria(Scanner sc, int i) {
+        System.out.println("Ingrese nombre de la materia " +i);
+        String nombreMateria = sc.next();
+        System.out.println("Ingrese el NRC de la materia " +i);
+        int nrc = sc.nextInt();
+        System.out.println("Ingrese el número de horas de la materia " +i);
+        String numHoras = sc.next();
+
+        Profesor profesor1 = ingresarProfesor(sc, 1);
+        Profesor profesor2 = ingresarProfesor(sc, 2);
+        Profesor profesor3 = ingresarProfesor(sc, 3);
+
+        Materia materia = new Materia(nombreMateria, nrc, numHoras, profesor1, profesor2, profesor3);
+        return materia;
+    }
+
+    private Profesor ingresarProfesor(Scanner sc, int i) {
+        System.out.println("Ingrese nombre del Profesor " + i + ":");
+        String nombreProfesor = sc.next();
+        System.out.println("Ingrese la cédula del Profesor " + i + ":");
         int cedula = sc.nextInt();
-        System.out.println("Ingrese su ID Banner: \n");
-        int idBanner = sc.nextInt();
+        System.out.println("Ingrese el ID del Profesor " + i + ":");
+        int idProfesor = sc.nextInt();
+
+        Profesor profesor = new Profesor(nombreProfesor, cedula, idProfesor);
+        return profesor;
     }
-    public void ingresarMaterias(){
+
+    public void imprimirTodosProfesores() {
+        String nomMateria1Profesor1 = materia1.getProfesor1().getNombre();
+        System.out.println("El nombre del profesor 1 de la materia " + materia1.getNombre() + " es: " + nomMateria1Profesor1);
+        String nomMateria2Profesor2 = materia2.getProfesor2().getNombre();
+        System.out.println("El nombre del profesor 2 de la materia " + materia2.getNombre() + " es: " + nomMateria2Profesor2);
+        String nomMateria3Profesor3 = materia3.getProfesor3().getNombre();
+        System.out.println("El nombre del profesor 3 de la materia " + materia3.getNombre() + " es: " + nomMateria3Profesor3);
+    }
+
+    public void ingresarDatos() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese Materia 1: \n");
-        String materia1 = sc.next();
-        System.out.println("Ingrese Materia 2: \n");
-        String materia2 = sc.next();
-        System.out.println("Ingrese Materia 3: \n");
-        String materia3 = sc.next();
+        System.out.println("Ingrese el nombre del estudiante:");
+        this.nombre = sc.next();
+        System.out.println("Ingrese su numero de cedula:");
+        this.cedula = sc.nextInt();
+        System.out.println("Ingrese su ID Banner:");
+        this.idBanner = sc.nextInt();
     }
 
     public int getIdBanner() {

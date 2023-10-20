@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class Profesor {
-    private String nombre="";
-    private int cedula=0;
-    private int idProfesor=0;
+    private String nombre;
+    private int cedula;
+    private int idProfesor;
 
-    public Profesor(){
+    public Profesor() {
 
     }
 
@@ -14,6 +14,7 @@ public class Profesor {
         this.cedula = cedula;
         this.idProfesor = idProfesor;
     }
+
 
     public String getNombre() {
         return nombre;
@@ -39,14 +40,5 @@ public class Profesor {
         this.idProfesor = idProfesor;
     }
 
-    public void ingresarDatos(int i){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese nombre del profesor: \n"+i);
-        String nombre = sc.next();
-        System.out.println("Ingrese cedula del profesor: \n"+i);
-        int cedula = sc.nextInt();
-        System.out.println("Ingrese el idProfesor: \n"+i);
-        int idProfesor = sc.nextInt();
-    }
 }
 
